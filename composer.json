@@ -1,0 +1,21 @@
+{
+    "name": "marc0237/php-session",
+    "description": "Gestion des données de session : choix d'un pays",
+    "type": "project",
+    "require-dev": {
+        "friendsofphp/php-cs-fixer": "^3.64"
+    },
+    "license": "Copyleft",
+    "autoload": {
+        "psr-4": {
+            "": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Corentin Marcoux",
+            "email": "corentin.marcoux@etudiant.univ-reims.fr"
+        }
+    ],
+    "require": {}
+}
