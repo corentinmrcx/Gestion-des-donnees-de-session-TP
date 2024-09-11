@@ -30,3 +30,9 @@ Si vous clonez votre dépôt Git, l'auto-chargement ne sera pas à jour et vous 
 
 Composer admet des noms de commandes courts, à condition qu'il n'y ait pas d'ambiguïté. Par exemple, composer du est équivalent à composer dump-autoload, alors que composer d est ambigu puisque plusieurs commandes commencent par la lettre « d ». 
 
+### Configuration de PHP CS Fixer
+
+- Déclencher la vérification du code :
+    `php vendor/bin/php-cs-fixer fix --dry-run`
+- Déclencher la correction du code PHP :
+    `php vendor/bin/php-cs-fixer fix`
