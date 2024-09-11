@@ -36,3 +36,21 @@ Composer admet des noms de commandes courts, à condition qu'il n'y ait pas d'am
     `php vendor/bin/php-cs-fixer fix --dry-run`
 - Déclencher la correction du code PHP :
     `php vendor/bin/php-cs-fixer fix`
+
+### Mise en place du serveur WEB local
+
+- Ajout au fichier « **composer.json** » les scripts 
+Composer « **start:linux** » et « **start:windows** »
+permettant de lancer respectivement les scripts
+« **bin/run-server.sh** » et « **bin/run-sever.bat** »  
+
+- Pour que les scripts n'aient pas de limite de temps d'exécution, il faut ajouter : `"Composer\\Config::disableProcessTimeout"`
+
+```
+    "scripts": {
+        "start:linux": ["Composer\\Config::disableProcessTimeout","bin/run-server.sh"],
+        "start:windows": ["Composer\\Config::disableProcessTimeout", ",bin/run-server.bat"],
+        "start": ["@start:linux"]
+        }
+```
+
