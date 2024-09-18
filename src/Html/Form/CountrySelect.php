@@ -77,13 +77,10 @@ class CountrySelect
 
     public function setSelectedCodeFromRequest(): void
     {
-        for ($i = 0; $i < count($_REQUEST); ++$i) {
-            if ($_REQUEST[$i] == $this->name) {
-                if (empty($_REQUEST[$i])) {
-                    break;
-                }
-
-                $this->selectedCode = $_REQUEST[$i];
+        $tab = $_REQUEST;
+        foreach($_REQUEST as $country){
+            if ($country == $this->name && !empty($country)){
+                $this->selectedCode = $country;
             }
         }
     }
