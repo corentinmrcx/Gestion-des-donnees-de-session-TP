@@ -10,4 +10,8 @@ class SessionManagedCountrySelect extends CountrySelect
         parent::__construct($name, $firstOption, $defaultCode);
         Session::start();
     }
+
+    public function saveSelectedCodeIntoSession(): void{
+        $_SESSION[$this->getName()] = $this->getSelectedCode();
+    }
 }
