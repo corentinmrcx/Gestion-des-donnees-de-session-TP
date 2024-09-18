@@ -1,7 +1,11 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Html\Form;
+
+use Entity\Collection\CountryCollection;
+use Html\StringEscaper;
 
 class CountrySelect
 {
@@ -9,7 +13,8 @@ class CountrySelect
     private string $firstOption;
     private string $selectedCode;
 
-    public function __construct(string $name, string $firstOption, string $selectedCode){
+    public function __construct(string $name, string $firstOption, string $selectedCode)
+    {
         $this->name = $name;
         $this->firstOption = $firstOption;
         $this->selectedCode = $selectedCode;
@@ -45,12 +50,28 @@ class CountrySelect
         $this->selectedCode = $selectedCode;
     }
 
-    public function toHtml(): string{
-        return (
-            <<<HTML
-            <select name="CountrySelect" id="CountrySelect">
-                <option value=""></option>
-            </select>  
-HTML);
+    public function toHtml(): string
+    {
+        $html = <<<HTML
+            <select name="{$this->name}">
+                <option value="">{$this->firstOption}</option>
+        HTML;
+
+        $countryTab = CountryCollection::findAll();
+        foreach ($countryTab as $country) {
+            $selected = "";
+            if ($country->getCode() === $this->getSelectedCode()) {
+                $selected = "selected";
+            }
+            $html .= <<<HTML
+                <option value="{$country->getCode()}" {$selected}>{$country->getName()}</option>
+            HTML;
+        }
+
+        $html .= <<<HTML
+            </select>
+        HTML;
+
+        return $html;
     }
 }
