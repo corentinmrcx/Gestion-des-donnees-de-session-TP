@@ -9,8 +9,6 @@ $webPage = new AppWebPage('Country selector');
 
 $select = new SessionManagedCountrySelect('country', 'Pays', 'fr');
 
-$select->setSelectedCodeFromRequest();
-
 $webPage->appendContent(
     <<<HTML
     <form class="country-selector">
@@ -21,4 +19,3 @@ $webPage->appendContent(
 );
 
 echo $webPage->toHTML();
-
