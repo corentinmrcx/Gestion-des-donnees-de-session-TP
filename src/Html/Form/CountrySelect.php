@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Html\Form;
 
 use Entity\Collection\CountryCollection;
-use Html\StringEscaper;
 
 class CountrySelect
 {
@@ -59,9 +58,9 @@ class CountrySelect
 
         $countryTab = CountryCollection::findAll();
         foreach ($countryTab as $country) {
-            $selected = "";
+            $selected = '';
             if ($country->getCode() === $this->getSelectedCode()) {
-                $selected = "selected";
+                $selected = 'selected';
             }
             $html .= <<<HTML
                 <option value="{$country->getCode()}" {$selected}>{$country->getName()}</option>
@@ -77,11 +76,8 @@ class CountrySelect
 
     public function setSelectedCodeFromRequest(): void
     {
-        $tab = $_REQUEST;
-        foreach($_REQUEST as $country){
-            if ($country == $this->name && !empty($country)){
-                $this->selectedCode = $country;
-            }
+        if (isset($_REQUEST[$this->name]) && '' !== $_REQUEST[$this->name]) {
+            $this->selectedCode = $_REQUEST[$this->name];
         }
     }
 }
