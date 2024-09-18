@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace Entity\Collection;
 
 use Database\MyPdo;
+use Entity\Country;
 
 class CountryCollection
 {
@@ -13,6 +14,6 @@ class CountryCollection
 SELECT * FROM country ORDER BY name
 SQL);
         $stmt->execute();
-        return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+        return $stmt->fetchAll(\PDO::FETCH_CLASS, Country::class);
     }
 }
