@@ -74,4 +74,17 @@ class CountrySelect
 
         return $html;
     }
+
+    public function setSelectedCodeFromRequest(): void
+    {
+        for ($i = 0; $i < count($_REQUEST); ++$i) {
+            if ($_REQUEST[$i] == $this->name) {
+                if (empty($_REQUEST[$i])) {
+                    break;
+                }
+
+                $this->selectedCode = $_REQUEST[$i];
+            }
+        }
+    }
 }
